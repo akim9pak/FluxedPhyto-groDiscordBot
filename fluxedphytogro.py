@@ -14,6 +14,7 @@ async def on_ready():
 
 @client.event
 async def on_message(message):
+    print(1)
     if message.author == client.user:
         return
     if message.content.startswith('$hello'):
@@ -22,6 +23,18 @@ async def on_message(message):
         await message.channel.send(gen_pass(10))
     if message.content.startswith('$coinflip'):
         await message.channel.send(gen_coin())
+    if message.content.startswith('$meme'):
+        skibidi = str(random.randint(1,3))    
+        with open('images/mem'+ skibidi + '.jpg', 'rb') as f:
+            picture = discord.File(f)
+        await message.channel.send(file=picture)
+    if message.content.startswith('$duck'):
+        image_url = get_duck_image_url()
+        await message.channel.send(image_url)
+    if message.content.startswith('$dice'):
+        first_dice = random.randint(1, 6)
+        second_dice = random.randint(1, 6)
+        await message.channel.send(f'Первый кубик - {first_dice}, Второй кубик - {second_dice}')
     elif message.content.startswith('$bye'):
         await message.channel.send("Bye!")
 
