@@ -19,6 +19,10 @@ async def on_message(message):
         return
     if message.content.startswith('$hello'):
         await message.channel.send("Hi!")
+
+    if message.content.startswith('$help'):
+        await message.channel.send("Префикс бота - $\n$hello/bye - привет и пока\n$password - Создаёт пароль из 10 символов\n$coinflip - Подбрасывание монетки\n$meme - Случайный мем\n$duck - Случайная утка\n$dice - Кидает два шестигранных кубика")
+
     if message.content.startswith('$password'):
         await message.channel.send(gen_pass(10))
     if message.content.startswith('$coinflip'):
