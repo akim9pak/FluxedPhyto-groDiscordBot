@@ -35,6 +35,10 @@ async def on_message(message):
         first_dice = random.randint(1, 6)
         second_dice = random.randint(1, 6)
         await message.channel.send(f'Первый кубик - {first_dice}, Второй кубик - {second_dice}')
+    if message.content.startswith('$trash'):
+        with open('trash.png', 'rb') as f:
+            trash_picture = discord.File(f)
+        await message.channel.send(file=trash_picture)
     elif message.content.startswith('$bye'):
         await message.channel.send("Bye!")
 
